@@ -1,0 +1,50 @@
+// 颜色定义规范
+$color-fff: #fff;
+
+// 用于重要级文字信息、内页标题信息
+$color-text-blue: #2badd7;
+// 用于重要级背景
+$color-back-blue: #2badd71a;
+//常用背景
+$color-back-body: #fbfbfb;
+//标题黑
+$color-font-title: #17233d;
+//默认字体颜色
+$color-font-default: #515a6e;
+
+//辅助字体颜色
+$color-font-Sub: #808695;
+
+//字体定义规范
+$fs-small: 12px;
+$fs-normal: 14px;
+$fs-normal-x: 16px;
+$fs-big: 18px;
+$fs-big-x: 20px;
+$fs-big-l: 22px;
+
+// 边距
+$void: 12px;
+$padding-s: 15px;
+$padding-m: 20px;
+$padding-l: 30px;
+
+//阴影
+$box-shadow: 0 1px 1px rgba(0,0,0,.08);;
+$box-shadow-all: 0px 0px 2px 0px #cccccc;
+
+//1px线条
+$border-1px: 1px solid #e8eaec;
+
+//一些动画时间
+$time-s: .3s;    
+
+//控件主要颜色
+$color-primary: #2db7f5;
+$color-success: #19be6b;
+$color-warning: #ff9900;
+$color-danger: #ed4014;
+$color-default: #e3e5e8;
+$color-disabled: #f7f7f7;
+$color-disabled-border: #eef1f6;
+$color-disabled-font: #c5c8ce;
