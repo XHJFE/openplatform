@@ -7,7 +7,7 @@
         </ul>
         <div class="x-nav-call text-center">
             <p class="x-nav-phone">联系客服(<span>8:30-18:00</span>)</p>
-            <p class="x-nav-text">0731-89681299</p>
+            <p class="x-nav-text">0731-89681300</p>
         </div>
         <div class="x-nav-ewm text-center">
             <img src="~assets/images/xh-ewm.jpg" alt="">

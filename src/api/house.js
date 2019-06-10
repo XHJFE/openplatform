@@ -37,4 +37,9 @@ methods.queryHouseProject = (mid, cityId = -1) => axios.post(`web/manager/findDe
  */
 methods.queryMyProjectId = mid => axios.get(`web/manager/findDevelopershouseIDbyhDID/${mid}`);
 
+/**
+ * 最近开盘数
+ */
+methods.queryNewKPCounts = () => axios.get(`web/manager/house/findNewKPCounts`);
+
 export default methods

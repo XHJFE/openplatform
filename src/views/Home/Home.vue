@@ -18,7 +18,7 @@
                 <div class="text-center">
                     <p>本月新增开盘数</p>
                     <h1 class="Home-big-text">
-                        20
+                        {{kpCounts}}
                     </h1>
                 </div>
                 <div class="text-center">
@@ -42,6 +42,8 @@
 
 <script>
     import {mapState} from 'vuex'
+    import api from 'api'
+    const houseApi = api.house;
 
     export default {
         name: 'Home',
@@ -52,11 +54,19 @@
                     {src: require('../../assets/images/xmgl.png'), text: '项目管理', href: '/manage/'},
                     {src: require('../../assets/images/xhjk.png'), text: '象盒进客', href: '/entry/'},
                     {src: require('../../assets/images/qyrz.png'), text: '企业认证', href: '/approve/'},
-                ]
+                ],
+                kpCounts: 0
             }
         },
         computed: {
             ...mapState(['status', 'wanzhengstatus']),
+        },
+        created() {
+            houseApi.queryNewKPCounts().then(data => {
+                if(data.code === 200 && data.data) {
+                    this.kpCounts = data.data;
+                }
+            })
         },
     }
 </script>

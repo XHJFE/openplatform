@@ -24,7 +24,7 @@
                                 <p>{{item.auditupdateTime}}</p>
 
                                 <!-- 不通过原因 -->
-                                <p>{{item.refusereson}}</p>
+                                <p v-if="item.status === -1">{{item.refusereson}}</p>
                             </div>
                         </Col>
                         <Col span="7">
@@ -32,12 +32,12 @@
                                 操作
                             </div>
                             <div class="text-center">
-                                <p class="Manage-btn Manage-btn-first text-center">
+                                <p class="Manage-btn Manage-btn-first text-left">
                                     <Button size="small" @click="edit(item.show_managerId, item.audit_id)" v-if="item.status === 1">修改电话</Button>
                                     <Button size="small" @click="again(item.houseId, item.houseName, item.audit_id, item.status)" v-if="item.status === -1">重新申请</Button>
                                     <Button size="small" @click="del(item.audit_id, item.name)">取消添加</Button>
                                     <Button size="small" @click="look(item.houseId, item.cityPY)" v-if="item.status === 1">查看获客</Button>
-                                    <Button size="small" @click="prev(item.houseId, item.cityPY)">&nbsp;&nbsp;预&nbsp;&nbsp;&nbsp;览&nbsp;&nbsp;</Button>
+                                    <Button size="small" @click="prev(item.houseId, item.cityId)">&nbsp;&nbsp;预&nbsp;&nbsp;&nbsp;览&nbsp;&nbsp;</Button>
                                 </p>
                             </div>
                         </Col>
@@ -92,7 +92,7 @@
             }
         },
         computed: {
-            ...mapState(['userInfo']),
+            ...mapState(['userInfo', 'cityList']),
             getCount() {
                 return `全部项目数（${this.list.length}）`
             }
@@ -181,8 +181,10 @@
             /**
              * 预览，打开新房详情
              */
-            prev(houseId, cityPY) {
-                window.open(`http://${cityPY}.fang.xhj.com/${houseId}.html`);
+            prev(houseId, cityId) {
+                let domain = this.getNewHouseDomain(cityId);
+                console.log(domain);
+                window.open(`${domain}${houseId}.html`);
             },
 
             /**
@@ -198,6 +200,23 @@
                         this.hasList = true;
                     }
                 })
+            },
+
+            /**
+             * 获取新房域名
+             */
+            getNewHouseDomain(cityId) {
+                let list = this.cityList || [];
+                let domain = 'http://fang.xhj.com/';
+                for(let i = 0; i < list.length; i++) {
+                    let cityList = list[i].list;
+                    for(let n = 0; n < cityList.length; n++) {
+                        if(cityList[n].cityId === cityId) {
+                            return cityList[n].domain.replace('xhj', 'fang.xhj');
+                        }
+                    }
+                }
+                return domain;
             }
         },
         created() {
@@ -222,7 +241,7 @@
         .Manage-btn-first {
             margin-top: 20px;
             width: 160px;
-            text-align: left;
+            padding-left: 13px;
             display: inline-block;
         }
 

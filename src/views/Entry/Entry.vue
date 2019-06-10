@@ -16,7 +16,7 @@
                     <FormItem label="项目" :labelWidth="65">
                         <Select v-model="houseId" @on-change="queryData" placeholder="请选择项目" style="width:200px">
                             <Option value="">请选择项目</Option>
-                            <Option v-for="item in houseList" :value="item.value" :key="item.value" v-if="item.status === 1">{{ item.name }}</Option>
+                            <Option v-for="item in houseList" :value="item.houseId" :key="item.houseId" v-if="item.status === 1">{{ item.name }}</Option>
                         </Select>
                     </FormItem>
                 </Col>
