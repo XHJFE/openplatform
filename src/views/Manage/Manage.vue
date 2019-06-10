@@ -25,6 +25,7 @@
 
                                 <!-- 不通过原因 -->
                                 <p v-if="item.status === -1">{{item.refusereson}}</p>
+
                             </div>
                         </Col>
                         <Col span="7">
@@ -183,7 +184,6 @@
              */
             prev(houseId, cityId) {
                 let domain = this.getNewHouseDomain(cityId);
-                console.log(domain);
                 window.open(`${domain}${houseId}.html`);
             },
 

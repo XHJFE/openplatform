@@ -192,14 +192,18 @@
         params.managerId = this.userInfo.managerId;
         let info = {
               title: '提交成功',
+              onOk: () => {
+                  this.$router.push('/home/');
+              }
             };
         if(params.wanzhengstatus < 2) {
           info.content = '<p>当前企业认证信息不完整，将影响部分功能的使用。</p>'
         }
         api.helper.updateApprove(params).then(data => {
+          if(!data.data) {
+            return
+          }
           this.$Modal.success(info);
-          this.queryForm();
-          this.loading = false;
         })
       },
 
