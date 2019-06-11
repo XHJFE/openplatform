@@ -4,7 +4,7 @@ const HOST = (type = '线上') => {
         '杨隽琛': 'http://192.168.2.114:88'
     }
 
-    return process.env.NODE_ENV === 'production' ? hosts['线上'] : hosts[type];
+    return process.env.NODE_ENV === 'production' && process.env.VUE_APP_ENV !== 'dev' ? hosts['线上'] : hosts[type];
 }
 
 export default {

@@ -1,15 +1,15 @@
 const path = require('path');
+const env = process.env.NODE_ENV;
+
 function resolve (dir) {
     return path.join(__dirname, dir)
 }
 
-const env = process.env.NODE_ENV;
-
 module.exports = {
+    productionSourceMap: env !== 'production',
     lintOnSave: false,
-    publicPath: env === 'production' ? '/dist/' : '/',
-    productionSourceMap: env === 'production' ? false : true,
-    // outputDir: 'ui',
+    publicPath: env === 'production' ? '/web/opendeveloper/' : '/',
+    outputDir: 'opendeveloper',
     configureWebpack: (config) => {
         if(env === 'production') {
             config.externals = {

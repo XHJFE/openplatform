@@ -16,7 +16,7 @@ Vue.use(Router);
 const router = new Router({
   mode: 'history',
   // base: process.env.BASE_URL,
-  base: process.env.NODE_ENV === 'production' ? '/' : '/',
+  base: process.env.NODE_ENV === 'production' ? '/opendeveloper/' : '/',
   scrollBehavior (to, from, savedPosition) {
     return { x: 0, y: 0 }
   },
