@@ -4,7 +4,7 @@
             <Row>
                 <Col span="7">
                     <FormItem label="城市" :labelWidth="65">
-                        <Select v-model="cityId" @on-change="queryData" placeholder="请输入或选择城市" style="width:200px">
+                        <Select v-model="cityId" @on-change="queryData(1)" placeholder="请输入或选择城市" style="width:200px">
                             <Option value="">请选择城市</Option>
                             <OptionGroup v-for="(item, index) in cityList" :key="index" :label="item.type">
                                 <Option v-for="v in item.list" :value="v.cityId" :key="v.cityId">{{ v.name }}</Option>
@@ -14,7 +14,7 @@
                 </Col>
                 <Col span="7">
                     <FormItem label="项目" :labelWidth="65">
-                        <Select v-model="houseId" @on-change="queryData" placeholder="请选择项目" style="width:200px">
+                        <Select v-model="houseId" @on-change="queryData(2)" placeholder="请选择项目" style="width:200px">
                             <Option value="">请选择项目</Option>
                             <Option v-for="item in houseList" :value="item.houseId" :key="item.houseId" v-if="item.status === 1">{{ item.name }}</Option>
                         </Select>
@@ -140,6 +140,12 @@
                         this.showListLoading = true;
                         this.tableBody = [];
                         let params = {...this.page};
+
+                        //选城市重置房源查询
+                        if(e === 1) {
+                            this.houseId = '';
+                        }
+
                         //有房源id查单个房源，传用户id查所有
                         if(this.houseId) {
                             params.houseId = this.houseId;
