@@ -134,13 +134,14 @@
         },
         methods: {
             queryData(e) {
+                console.log(e);
                 verify.verifyUserStatus({
                     success: () => {
                         this.hasList = false;
                         this.showListLoading = true;
                         this.tableBody = [];
                         let params = {...this.page};
-
+                        
                         //选城市重置房源查询
                         if(e === 1) {
                             this.houseId = '';
