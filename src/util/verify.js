@@ -12,7 +12,7 @@ const methods = {};
 methods.validatePhone = (rule, value, callback) => {
     if (!value) {
         return callback('电话号码不能为空');
-    } else if (!/^1[34578]\d{9}$/.test(value)) {
+    } else if (!/^1[345789]\d{9}$/.test(value)) {
         callback('电话号码格式不正确');
     } else {
         callback();
