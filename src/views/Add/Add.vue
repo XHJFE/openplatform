@@ -44,7 +44,7 @@
                     </Row>
                 </Card>
             </div>
-            <x-info v-if="hasList" text="暂时没有更多的房源数据" type="warning"></x-info>
+            <x-info v-if="hasList" text="重新查找楼盘或拨打0731-89681300进行咨询" type="warning"></x-info>
             <Page 
             :total="total"
             :current="page.currPage"
